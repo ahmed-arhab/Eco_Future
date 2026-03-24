@@ -1,0 +1,296 @@
+/* Profile-specific styles */
+        .profile-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .profile-builder {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(26, 77, 46, 0.08);
+        }
+
+        .profile-display {
+            background: linear-gradient(135deg, #1a4d2e 0%, #2d5f41 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(26, 77, 46, 0.15);
+            color: #f5f7f8;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .intro-section {
+            position: relative;
+            background: linear-gradient(rgba(26, 77, 46, 0.75), rgba(26, 77, 46, 0.9));
+            color: #FFFFFF;
+            text-align: center;
+            padding: 3rem 2rem;
+            border: 2px solid chartreuse;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(26, 77, 46, 0.8);
+        }
+
+        .intro-section h2 {
+            color: #FFFFFF;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .intro-section p {
+            color: #f5f7f8;
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .progress-indicator {
+            background-color: #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background-color: #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 1rem 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4fa875 0%, #20dd78 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .progress-text {
+            color: #31533e;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .builder-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .builder-header h3 {
+            color: #31533e;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .builder-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-step {
+            flex: 1;
+            min-width: 120px;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 8px;
+            background-color: #e9ecef;
+            color: #31533e;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-step:hover {
+            background-color: #dee2e6;
+            transform: translateY(-2px);
+        }
+
+        .btn-step.active {
+            background-color: #4fa875;
+            color: #ffffff;
+        }
+
+        .btn-step.completed {
+            background-color: #20dd78;
+            color: #2c3e35;
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        .prompt-group {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .prompt-group:last-child {
+            border-bottom: none;
+        }
+
+        .prompt-label {
+            font-weight: 600;
+            color: #31533e;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .prompt-value {
+            color: #5c7063;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            background-color: #4fa875;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #31533e;
+            color: #f5f7f8;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background-color: #dee2e6;
+            color: #31533e;
+        }
+
+        .btn-secondary:hover {
+            background-color: #adb5bd;
+            color: #2c3e35;
+        }
+
+        .profile-section {
+            margin-bottom: 2rem;
+        }
+
+        .profile-section h4 {
+            color: #87b79c;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid rgba(135, 183, 156, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .profile-item {
+            background-color: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            border-left: 3px solid #20dd78;
+        }
+
+        .profile-item-label {
+            font-size: 0.85rem;
+            color: #d0e8d0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .profile-item-value {
+            color: #f5f7f8;
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+
+        .profile-empty {
+            color: #aef2c7;
+            font-style: italic;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .completion-message {
+            background-color: #20dd78;
+            color: #2c3e35;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .completion-message.show {
+            display: block;
+        }
+
+        @media (max-width: 1024px) {
+            .profile-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                margin-top: 1rem;
+            }
+
+            .profile-builder,
+            .profile-display {
+                padding: 1.5rem;
+            }
+
+            .intro-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .builder-buttons {
+                flex-direction: column;
+            }
+
+            .btn-step {
+                min-width: auto;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
