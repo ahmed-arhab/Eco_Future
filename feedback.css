@@ -1,0 +1,187 @@
+
+body {
+  margin: 0; /* reset default browser margin so header sits flush */
+}
+
+
+:root {
+  /* Color Palette */
+  --bg-primary: #06140f;
+  --bg-secondary: #0a1f18;
+  --primary-green: #2ecc71;
+  --primary-dark-green: #145c32;
+  --secondary-light-green: #a7f3d0;
+  --accent-blue: #3b82f6;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+ 
+  /* Glassmorphism */
+  --glass-bg: rgba(0, 87, 0, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+ 
+  /* Utility */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+
+  --success-color: #2ecc71;
+  --error-color: #e74c3c;
+  --secondary-color: #a7f3d0;
+  --surface-color: #0a1f18;
+  --primary-color: #2ecc71;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-soft: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --transition-speed: 0.3s ease;
+
+  /* Form-specific variables (new) */
+  --input-bg: rgba(10, 31, 24, 0.6);
+  --input-border: rgba(46, 204, 113, 0.25);
+  --input-focus: rgba(46, 204, 113, 0.4);
+  --select-arrow: var(--primary-green);
+}
+
+/* ─────────────────────────────────────────────── */
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3rem;
+  background: linear-gradient(to right, var(--secondary-light-green), var(--primary-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+img {
+  max-width: 100%;
+  border-radius: var(--radius-sm);
+  display: block;
+}
+
+/* ─────────────────────────────────────────────── */
+/* Form Elements – especially the programme <select> */
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+  color: var(--text-main);
+  font-size: 1.05rem;
+}
+
+input[type="date"],
+input[type="datetime-local"],
+select#program {
+  width: 75%;
+  padding: 0.9rem 1.1rem;
+  font-size: 1rem;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-main);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-normal);
+  appearance: none; /* remove default styling */
+}
+
+/* Custom dropdown arrow for select */
+select#program {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%232ecc71' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 16px;
+  padding-right: 2.8rem; /* space for arrow */
+}
+
+input[type="date"]:focus,
+input[type="datetime-local"]:focus,
+select#program:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 3px var(--input-focus);
+  background: rgba(10, 31, 24, 0.8);
+}
+
+select#program option {
+  background-color: var(--bg-secondary);
+  color: var(--text-main);
+  padding: 0.6rem 1rem;
+}
+
+/* Hover state for better interactivity */
+select#program:hover {
+  border-color: rgba(46, 204, 113, 0.45);
+  background: rgba(10, 31, 24, 0.75);
+}
+
+/* ─────────────────────────────────────────────── */
+/* Links & Buttons */
+a {
+  color: var(--primary-green);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--secondary-light-green);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-green);
+  color: var(--bg-primary);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.btn:hover {
+  background-color: var(--secondary-light-green);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+}
+
+

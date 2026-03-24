@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback & Program Directory | EcoFuture</title>
+    <link rel="icon" type="image" href="image/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="feedback.css">
+
+    <style>
+        /* ─────────────────────────────────────────────── */
+        /* Feedback Form – Vertical Programme Cards */
+        #feedbackForm {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        #feedbackForm fieldset {
+            border: 1px solid rgba(46, 204, 113, 0.22);
+            border-radius: var(--radius-md);
+            padding: 2rem 1.8rem;
+            margin-bottom: 2.8rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            box-shadow: inset 0 2px 12px rgba(0,0,0,0.2);
+        }
+
+        #feedbackForm legend {
+            font-size: 1.25rem;
+            color: var(--primary-green);
+            font-weight: 600;
+            padding: 0 1rem;
+            background: var(--bg-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.6rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .required {
+            color: #f87171;
+            margin-left: 0.35rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.9rem 1.1rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            transition: all 0.25s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(46,204,113,0.25);
+            background: rgba(255,255,255,0.07);
+        }
+
+        #counter {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        #counter.warning { color: #fbbf24; }
+        #counter.danger   { color: #f87171; }
+
+        /* Vertical Programme Cards */
+        .program-selection .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.4rem;
+            margin-top: 1rem;
+        }
+
+        .program-card-option {
+            background: rgba(10, 31, 24, 0.5);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .program-card-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .program-card-option img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .program-card-option .content {
+            padding: 1.2rem;
+        }
+
+        .program-card-option h4 {
+            margin: 0 0 0.5rem;
+            font-size: 1.15rem;
+            color: var(--text-main);
+        }
+
+        .program-card-option p {
+            margin: 0;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        .program-card-option:hover {
+            transform: translateY(-5px);
+            border-color: rgba(46,204,113,0.5);
+            box-shadow: 0 10px 28px rgba(46,204,113,0.18);
+        }
+
+        .program-card-option input:checked + .inner {
+            border: 2px solid var(--primary-green);
+            background: rgba(46,204,113,0.14);
+            box-shadow: 0 0 0 4px rgba(46,204,113,0.25);
+        }
+
+        .inner {
+            border: 2px solid transparent;
+            border-radius: var(--radius-md);
+            transition: all 0.28s ease;
+        }
+
+        /* Submit button */
+        #feedbackForm .btn {
+            padding: 1rem 2.4rem;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 680px) {
+            .program-selection .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<script>
+// Character Counter
+const message = document.getElementById("message");
+const counter = document.getElementById("counter");
+
+message.addEventListener("input", () => {
+    let remaining = 300 - message.value.length;
+    counter.textContent = remaining + " characters remaining";
+
+    if (remaining < 50) {
+        counter.classList.add("warning");
+    }
+    if (remaining < 20) {
+        counter.classList.add("danger");
+    }
+});
+
+// Form Validation + Confirmation
+document.getElementById("feedbackForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name");
+    let email = document.getElementById("email");
+
+    if (name.value.trim() === "") {
+        alert("Please enter your name");
+        name.focus();
+        return;
+    }
+
+    if (!email.value.includes("@")) {
+        alert("Enter valid email");
+        email.focus();
+        return;
+    }
+
+    alert("Thank you for your feedback!");
+    this.reset();
+});
+</script>
+<header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="image/logo.png" alt="climate change logo">
+                <div class="logo-text">Eco<span>Future</span></div>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="#">Simulator</a></li>
+                    <li><a href="feedback.html"  class="active">Feedback</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="profile.html">UserProfile</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+                </nav>
+            <button class="menu-toggle"></button>
+        </div>
+    </header>
+
+    <br>
+    <div class="container">
+        <center>
+        <h1 class="section-title">Program Directory & Feedback</h1>
+        <p class="text-center" style="max-width: 700px; margin: 0 auto 3.0rem; color: var(--text-muted);">
+        Real opportunities for students and community members to take action on SDG 13 <br>(Climate Action).<br>
+        Browse programmes, read what others say, and share your feedback with us.
+        </p>
+        </center>
+    </div>
+    <br>
+        <!-- FEEDBACK FORM -->
+
+        <section id="form-section">
+            <center>
+            <h2>Send Us Your Feedback</h2>
+            </center>
+            <form id="feedbackForm">
+                <fieldset>
+                    <legend>Personal Details</legend>
+                    <div class="form-group">
+                        <label>Full Name <span class="required">*</span></label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email <span class="required">*</span></label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telephone</label>
+                        <input type="tel" id="tel">
+                    </div>
+                    <div class="form-group">
+                        <label>Address / City</label>
+                        <textarea id="address" rows="2"></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Your Feedback & Interests</legend>
+
+                    <div class="form-group">
+                        <label>Your Thoughts (max 300 characters)</label>
+                        <textarea id="message" maxlength="300" rows="5"></textarea>
+                        <span id="counter">300 characters remaining</span>
+                    </div>
+
+                    <section class="program-directory" style="max-width:1100px;margin:40px auto;">
+    <h2 style="text-align:center;">Explore Programmes</h2>
+
+    <!-- Dropdown -->
+    <div style="margin:20px 0;">
+        <select>
+            <option>Most Popular</option>
+            <option>Nearest</option>
+            <option>Student Friendly</option>
+        </select>
+    </div>
+
+    <!-- Scrollable Cards -->
+    <div style="max-height:300px; overflow-y:auto; display:grid; gap:20px;">
+        
+        <div class="program-card-option">
+            <div class="inner">
+                <img src="Tree planting drive.png" alt="Tree Planting">
+                <div class="content">
+                <h4>Tree Planting Drive</h4>
+                <p>Weekly planting in city parks & suburbs</p>
+                <button class="btn">Join</button>                   
+                </div>
+            </div>
+        </div>
+
+        <div class="program-card-option">
+            <div class="inner">
+                <img src="Beach clean up.png" alt="Beach Clean-Up">
+                <div class="content">
+                    <h4>Beach Clean-Up</h4>
+                    <p>Help remove plastic waste on sea shores.</p>
+                    <button class="btn">Join</button>
+                </div>
+            </div>
+        </div>
+       
+        <div class="program-card-option">
+            <div class="inner">
+                <img src="Waste management.png" alt="Waste Management">
+                <div class="content">
+                    <h4>Waste Management</h4>
+                    <p>Collect and Recycle garbages</p>
+                    <button class="btn">Join</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="program-card-option">
+            <div class="inner">
+                <img src="River and Canal clean up.png" alt="River Clean-Up">
+                <div class="content">
+                    <h4>River & Canal Clean-Up</h4>
+                    <p>Clear waste from urban waterways</p>
+                    <button class="btn">Join</button>
+                </div>
+            </div>
+        </div>        
+
+        <div class="program-card-option">
+            <div class="inner">
+                <img src="Organic Farming workshop.png" alt="Organic Farming">
+                <div class="content">
+                    <h4>Organic Farming Workshop</h4>
+                    <p>Learn sustainable growing techniques</p>
+                    <button class="btn">Join</button>
+                </div>
+            </div>
+        </div>  
+
+         <div class="program-card-option">
+            <div class="inner">
+                <img src="Seed Banks.png" alt="Seed Banks">
+                <div class="content">
+                    <h4>Seed Banks</h4>
+                    <p>Preserving seeds for future</p>
+                    <button class="btn">Join</button>
+                </div>
+            </div>
+        </div>  
+
+    </div>
+</section>
+                    
+                    <div class="form-group">
+                        <label>Preferred time slot</label>
+                        <input type="datetime-local" id="datetime">
+                    </div>
+                </fieldset>
+                <center>
+                <button type="submit" class="btn">Submit Feedback</button>
+                </center>
+            </form>
+        </section>
+    </div>
+</main>
+
+<!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3><span class="footerblack">About</span>EcoFuture</h3>
+                <p>EcoFuture is dedicated to creating awareness and driving action towards SDG 13: Climate Action. Together, we build a sustainable future for our planet.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3><span class="footerblack">Quick</span>Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="profile.html">UserProfile</a></li>
+                </ul>
+            </div>
+
+
+            <div class="footer-section">
+                <h3><span class="footerblack">More</span>Info</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Page Editor</a></li>
+                    <li><a href="#">Validation</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="team.html">Team</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 EcoFuture. All rights reserved.</p>
+            <p>Committed to SDG 13: Climate Action for a Sustainable Future</p>
+        </div>
+    </footer>
+
+    <script src="feedback.js"></script>
+
+</body>
+</html>
