@@ -1,8 +1,8 @@
 /* Profile-specific styles */
         .profile-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr; /* (fraction) Two equal columns */
+            gap: 2rem;  /* 1rem (root em) is equals to 16px */
             margin-top: 2rem;
         }
 
@@ -183,6 +183,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.1s ease;
+            /* ease controls speed of animations (How fast or slow in starts or ends)*/
             text-align: center;
         }
 

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFuture - Sitemap</title>
+    <link rel="icon" href="../EcoFuture/image/logo.png">
+    <link rel="stylesheet" href="../EcoFuture/style.css">
+    <style>
+        /* Sitemap-specific styles */
+        .sitemap-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(26, 77, 46, 0.08);
+        }
+
+        .sitemap-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .sitemap-header h1 {
+            color: #31533e;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sitemap-header p {
+            color: #5c7063;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* SVG Sitemap Container */
+        .svg-wrapper {
+            position: relative;
+            width: 100%;
+            overflow-x: auto;
+            background: linear-gradient(135deg, rgba(26, 77, 46, 0.05), rgba(79, 168, 117, 0.05));
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        svg {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Node styles */
+        .sitemap-node {
+            cursor: pointer;
+        }
+
+        .node-rect {
+            fill: #f5f7f8;
+            stroke: #4fa875;
+            stroke-width: 2;
+            transition: all 0.3s ease;
+        }
+
+        .node-rect:hover {
+            fill: #4fa875;
+            stroke: #31533e;
+            stroke-width: 3;
+            filter: drop-shadow(0 4px 8px rgba(26, 77, 46, 0.2));
+        }
+
+        .node-rect:focus {
+            outline: 3px solid #20dd78;
+            outline-offset: 2px;
+        }
+
+        .node-text {
+            fill: #31533e;
+            font-size: 14px;
+            font-weight: 600;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            pointer-events: none;
+            transition: fill 0.3s ease;
+        }
+
+        .sitemap-node:hover .node-text {
+            fill: #ffffff;
+            font-weight: 700;
+        }
+
+        .sitemap-node:focus-within .node-text {
+            fill: #31533e;
+        }
+
+        /* Link lines */
+        .connector-line {
+            stroke: #4fa875;
+            stroke-width: 2;
+            fill: none;
+            pointer-events: none;
+        }
+
+        /* Parent node styling */
+        .parent-rect {
+            fill: #1a4d2e;
+            stroke: #31533e;
+            stroke-width: 3;
+        }
+
+        .parent-text {
+            fill: #f5f7f8;
+            font-size: 16px;
+        }
+
+        .parent-rect:hover {
+            fill: #31533e;
+            stroke: #4fa875;
+            stroke-width: 4;
+        }
+
+        .parent-rect:focus {
+            outline: 3px solid #20dd78;
+        }
+
+        /* Secondary level styling */
+        .secondary-rect {
+            fill: #e9ecef;
+            stroke: #87b79c;
+            stroke-width: 2;
+        }
+
+        .secondary-rect:hover {
+            fill: #87b79c;
+            stroke: #4fa875;
+            stroke-width: 3;
+        }
+
+        /* Legend */
+        .sitemap-legend {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #4fa875;
+        }
+
+        .sitemap-legend h3 {
+            color: #31533e;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .legend-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 2px;
+            border: 2px solid;
+        }
+
+        .legend-home {
+            background-color: #1a4d2e;
+            border-color: #31533e;
+        }
+
+        .legend-secondary {
+            background-color: #e9ecef;
+            border-color: #87b79c;
+        }
+
+        .legend-page {
+            background-color: #f5f7f8;
+            border-color: #4fa875;
+        }
+
+        .legend-text {
+            color: #5c7063;
+            font-size: 0.95rem;
+        }
+
+        /* Accessibility instructions */
+        .accessibility-info {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #e8f5e9;
+            border-radius: 6px;
+            border-left: 4px solid #4fa875;
+            font-size: 0.95rem;
+            color: #1b5e20;
+        }
+
+        .accessibility-info h4 {
+            color: #1b5e20;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .sitemap-header h1 {
+                font-size: 2rem;
+            }
+
+            .svg-wrapper {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sitemap-container {
+                padding: 1rem;
+            }
+
+            .sitemap-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .sitemap-header p {
+                font-size: 1rem;
+            }
+
+            .svg-wrapper {
+                padding: 0.5rem;
+                margin: 1rem 0;
+            }
+
+            .legend-items {
+                grid-template-columns: 1fr;
+            }
+
+            .node-text {
+                font-size: 12px;
+            }
+
+            .parent-text {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sitemap-header h1 {
+                font-size: 1.25rem;
+            }
+
+            .node-text {
+                font-size: 11px;
+            }
+
+            .parent-text {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="../EcoFuture/image/logo.png" alt="EcoFuture logo">
+                <div class="logo-text">Eco<span>Future</span></div>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../EcoFuture/index.html">Home</a></li>
+                    <li><a href="../EcoFuture/gallary.html">Gallery</a></li>
+                    <li><a href="#">Simulator</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="profile.html">User Profile</a></li>
+                    <li><a href="sitemap.html" class="active">Sitemap</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="sitemap-container">
+            <!-- Header Section -->
+            <div class="sitemap-header">
+                <h1>Website Sitemap</h1>
+                <p>This interactive sitemap displays the hierarchical structure of the EcoFuture website. Click any page to navigate, or use your keyboard to navigate through the sitemap.</p>
+            </div>
+
+            <!-- SVG Sitemap -->
+            <div class="svg-wrapper" role="region" aria-label="Website structure sitemap">
+                <svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg" aria-label="EcoFuture website hierarchy diagram">
+
+                    <!-- Connector Lines -->
+                    <g class="connector-lines">
+                        <!-- Eco Future to Splash Screen -->
+                        <line class="connector-line" x1="420" y1="57" x2="50" y2="57" />
+                        <line class="connector-line" x1="50" y1="57" x2="50" y2="100" />
+
+                        <!-- Splash Screen to  Home Page-->
+                        <line class="connector-line" x1="50" y1="122" x2="50" y2="200" />
+
+                        <!-- Eco Future to all -->
+                        <line class="connector-line" x1="195" y1="57" x2="195" y2="200" />
+                        <!-- Horizontal -->
+                        <line class="connector-line" x1="195" y1="120" x2="950" y2="120" />
+                        <!-- Vertical -->
+                        <line class="connector-line" x1="340" y1="120" x2="340" y2="200" />
+                        <line class="connector-line" x1="495" y1="120" x2="495" y2="200" />
+                        <line class="connector-line" x1="650" y1="120" x2="650" y2="200" />
+                        <line class="connector-line" x1="805" y1="120" x2="805" y2="200" />
+                        <line class="connector-line" x1="950" y1="120" x2="950" y2="200" />
+                    </g>
+
+                    <!-- Eco Future - Parent Node -->
+                    <a href="sitemap.html" class="sitemap-node" tabindex="0">
+                        <title>EcoFuture</title>
+                        <rect class="node-rect parent-rect" x="420" y="20" width="160" height="65" rx="35" />
+                        <text class="node-text parent-text" x="500" y="55">Eco Future</text>
+                    </a>
+
+                        <!-- Splash Screen -->
+                        <a href="index.html" class="sitemap-node" tabindex="0">
+                            <title>Splash Screen</title>
+                            <rect class="node-rect secondary-rect" x="1" y="95" width="100" height="65" rx="35" />
+                            <text class="node-text" x="51" y="130">Splash Screen</text>
+                        </a>
+
+                        <!-- Home Page -->
+                        <a href="index.html" class="sitemap-node" tabindex="0">
+                            <title>Home Page</title>
+                            <rect class="node-rect secondary-rect" x="1" y="180" width="100" height="65" rx="35" />
+                            <text class="node-text" x="51" y="215">Home</text>
+                        </a>
+
+                        <!-- Gallery Page -->
+                        <a href="gallery.html" class="sitemap-node" tabindex="0">
+                            <title>Gallery - View our collection of climate action images</title>
+                            <rect class="node-rect secondary-rect" x="146" y="180" width="100" height="65" rx="35" />
+                            <text class="node-text" x="196" y="215">Gallery</text>
+                        </a>
+
+                                <!-- Gallery Sub-pages -->
+                                <a href="#" class="sitemap-node" tabindex="0">
+                                    <title>Melting Glaciers</title>
+                                    <rect class="node-rect" x="134" y="255" width="116" height="40" rx="25" />
+                                    <text class="node-text" x="192" y="275">Melting Glaciers</text>
+                                </a>
+
+                                <a href="#" class="sitemap-node" tabindex="0">
+                                    <title>Wild Fires</title>
+                                    <rect class="node-rect" x="152" y="300" width="80" height="40" rx="25" />
+                                    <text class="node-text" x="192" y="320">Wild Fires</text>
+                                </a>
+
+                                <a href="#" class="sitemap-node" tabindex="0">
+                                    <title>Renewable Energy</title>
+                                    <rect class="node-rect" x="129" y="345" width="126" height="40" rx="25" />
+                                    <text class="node-text" x="192" y="365">Renewable Energy</text>
+                                </a>
+
+                                <a href="#" class="sitemap-node" tabindex="0">
+                                    <title>Rising Sea Levels</title>
+                                    <rect class="node-rect" x="134" y="390" width="116" height="40" rx="25" />
+                                    <text class="node-text" x="192" y="410">Rising Sea Levels</text>
+                                </a>
+
+                        <!-- Simulation Page -->
+                        <a href="#" class="sitemap-node" tabindex="0">
+                            <title>Simulator - Experience the impact of climate change</title>
+                            <rect class="node-rect secondary-rect" x="291" y="180" width="100" height="65" rx="35" />
+                            <text class="node-text" x="341" y="215">Simulator</text>
+                        </a>
+
+                        <!-- Feedback Page -->
+                        <a href="#" class="sitemap-node" tabindex="0">
+                            <title>Feedback</title>
+                            <rect class="node-rect secondary-rect" x="436" y="180" width="120" height="65" rx="35" />
+                            <text class="node-text" x="496" y="215">Feedback</text>
+                        </a>
+                        
+
+                        <!-- Team Page -->
+                        <a href="#" class="sitemap-node" tabindex="0">
+                            <title>Team - Meet our development team</title>
+                            <rect class="node-rect secondary-rect" x="601" y="180" width="100" height="65" rx="35" />
+                            <text class="node-text" x="651" y="215">Team</text>
+                        </a>
+
+                        <!-- User Profile Page -->
+                        <a href="profile.html" class="sitemap-node" tabindex="0">
+                            <title>User Profile - Create your climate action profile</title>
+                            <rect class="node-rect secondary-rect" x="746" y="180" width="120" height="65" rx="35" />
+                            <text class="node-text" x="806" y="215">User Profile</text>
+                        </a>
+
+                        <!-- Sitemap Page (Self-reference) -->
+                        <a href="sitemap.html" class="sitemap-node" tabindex="0">
+                            <title>Sitemap - Website structure (current page)</title>
+                            <rect class="node-rect secondary-rect" x="899" y="180" width="100" height="65" rx="35" />
+                            <text class="node-text" x="949" y="215">Sitemap</text>
+                        </a>
+
+
+                        <!-- Connector lines for utility pages -->
+                        <line class="connector-line" x1="50" y1="246" x2="50" y2="550" />
+                        <line class="connector-line" x1="50" y1="480" x2="550" y2="480" />
+                        <line class="connector-line" x1="310" y1="479" x2="310" y2="550" />
+                        <line class="connector-line" x1="550" y1="479" x2="550" y2="550" />
+                        
+
+                        <!-- Page Editor Page -->
+                            <title>Page Editor - Edit website content</title>
+                            <rect class="node-rect" x="1" y="520" width="140" height="65" rx="35" />
+                            <text class="node-text" x="71" y="555">Page Editor</text>
+
+                                <!-- ST 1 2 3 4 -->
+                                <a href="">
+                                <rect class="node-rect" x="1" y="590" width="40" height="40" rx="35" />
+                                <text class="node-text" x="21" y="612">ST1</text>
+                                </a>
+
+                                <a href="">
+                                <rect class="node-rect" x="1" y="635" width="40" height="40" rx="35" />
+                                <text class="node-text" x="21" y="656">ST2</text>
+                                </a>
+
+                                <a href="">
+                                <rect class="node-rect" x="1" y="680" width="40" height="40" rx="35" />
+                                <text class="node-text" x="21" y="700">ST3</text>
+                                </a>
+
+                                <a href="">
+                                <rect class="node-rect" x="1" y="725" width="40" height="40" rx="35" />
+                                <text class="node-text" x="21" y="746">ST4</text>
+                                </a>
+
+                        <!-- Validation Page -->
+                            <title>Validation - HTML and accessibility validation</title>
+                            <rect class="node-rect" x="241" y="520" width="140" height="65" rx="35" />
+                            <text class="node-text" x="311" y="555">Validation</text>
+
+                            <!-- ST 1 2 3 4 -->
+                                <a href="">
+                                <rect class="node-rect" x="241" y="590" width="40" height="40" rx="35" />
+                                <text class="node-text" x="261" y="612">ST1</text>
+                                </a>
+
+                                <a href="">
+                                <rect class="node-rect" x="241" y="635" width="40" height="40" rx="35" />
+                                <text class="node-text" x="261" y="656">ST2</text>
+                                </a>
+
+                                <a href="">
+                                <rect class="node-rect" x="241" y="680" width="40" height="40" rx="35" />
+                                <text class="node-text" x="261" y="700">ST3</text>
+                                </a>
+
+                                <a href="">
+                                <rect class="node-rect" x="241" y="725" width="40" height="40" rx="35" />
+                                <text class="node-text" x="261" y="746">ST4</text>
+                                </a>
+
+                        <!-- Content Page -->
+                            <title>Content - Additional website content</title>
+                            <rect class="node-rect" x="482" y="520" width="140" height="65" rx="35" />
+                            <text class="node-text" x="552" y="555">Content</text>
+
+                            <!-- ST 1 2 3 4 -->
+                                <a href="">
+                                <rect class="node-rect" x="482" y="590" width="40" height="40" rx="35" />
+                                <text class="node-text" x="502" y="612">ST1</text>
+                                </a>
+
+                                <a href="">
+                                <rect class="node-rect" x="482" y="635" width="40" height="40" rx="35" />
+                                <text class="node-text" x="502" y="656">ST2</text>
+                                </a>
+
+                                <a href="">
+                                <rect class="node-rect" x="482" y="680" width="40" height="40" rx="35" />
+                                <text class="node-text" x="502" y="700">ST3</text>
+                                </a>
+
+                                <a href="">
+                                <rect class="node-rect" x="482" y="725" width="40" height="40" rx="35" />
+                                <text class="node-text" x="502" y="746">ST4</text>
+                                </a>
+                    </svg>
+            </div>
+        </div>        
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            
+
+            <div class="footer-section">
+                <h3><span class="footerblack">Quick</span>Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallary.html">Gallery</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="profile.html">UserProfile</a></li>
+                </ul>
+            </div>
+
+
+            <div class="footer-section">
+                <h3><span class="footerblack">More</span>Info</h3>
+                <ul class="footer-links">
+                    <li><a href="sitemap.html">Sitemap</a></li>
+                    <li><a href="team.html">Team</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3><span class="footerblack">Page</span>Editor</h3>
+                <ul class="footer-links">
+                    <li><a href="pageEditor_ST1.html">ST 1</a></li>
+                    <li><a href="pageEditor_ST2.html">ST 2</a></li>
+                    <li><a href="pageEditor_ST3.html">ST 3</a></li>
+                    <li><a href="pageEditor_ST4.html">ST 4</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3><span class="footerblack">Valid</span>ation</h3>
+                <ul class="footer-links">
+                    <li><a href="validation_ST1.html">ST 1</a></li>
+                    <li><a href="validation_ST2.html">ST 2</a></li>
+                    <li><a href="validation_ST3.html">ST 3</a></li>
+                    <li><a href="validation_ST4.html">ST 4</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 EcoFuture. All rights reserved.</p>
+            <p>Committed to SDG 13: Climate Action for a Sustainable Future</p>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
