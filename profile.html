@@ -23,11 +23,11 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="#">Simulator</a></li>
-                    <li><a href="#">Feedback</a></li>
+                    <li><a href="simulator.html">Simulator</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
                     <li><a href="team.html">Team</a></li>
                     <li><a href="profile.html" class="active">User Profile</a></li>
-                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="sitemap.html">Sitemap</a></li>
                 </ul>
             </nav>
         </div>
@@ -204,307 +204,139 @@
     </footer>
 
     <script>
-        // User profile data structure
-        const userProfile = {
-            step1: {
-                fullName: null,
-                username: null,
-                role: null,
-                completed: false
-            },
-            step2: {
-                concern: null,
-                learning: null,
-                knowledge: null,
-                completed: false
-            },
-            step3: {
-                actions: null,
-                goal: null,
-                contribution: null,
-                completed: false
-            }
+        // Store all user data
+        let userProfile = {
+        step1: { fullName: "", username: "", role: "" },
+        step2: { concern: "", learning: "", knowledge: "" },
+        step3: { actions: "", goal: "", contribution: "" }
         };
 
-        let currentStep = 1;
-
-        // Function to switch to a specific step
-        function startStep(stepNumber) {
-            // Hide all steps
-            document.getElementById('step-1').classList.remove('active');
-            document.getElementById('step-2').classList.remove('active');
-            document.getElementById('step-3').classList.remove('active');
-
-            // Remove active class from all buttons
-            document.querySelectorAll('.btn-step').forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            // Show selected step and mark button as active
-            document.getElementById(`step-${stepNumber}`).classList.add('active');
-            event.target.classList.add('active');
-
-            currentStep = stepNumber;
-        }
-
-        // Function to collect Step 1 data
-        function collectStep1() {
-            if (confirmStep(1)) {
-                const fullName = prompt('What is your full name?');
-                if (fullName === null) return;
-
-                const username = prompt('What is your preferred username for the climate action community?');
-                if (username === null) return;
-
-                const role = prompt('What is your role or interest in climate action? (e.g., Student, Educator, Activist, Interested Learner, etc.)');
-                if (role === null) return;
-
-                // Store data
-                userProfile.step1.fullName = fullName || 'Not provided';
-                userProfile.step1.username = username || 'Not provided';
-                userProfile.step1.role = role || 'Not provided';
-                userProfile.step1.completed = true;
-
-                // Update display
-                updateStep1Display();
-                markStepAsCompleted(1);
-                updateProgress();
-            }
-        }
-
-        // Function to collect Step 2 data
-        function collectStep2() {
-            if (confirmStep(2)) {
-                const concern = prompt('What is your main concern related to climate change? (e.g., Rising sea levels, Extreme weather, Biodiversity loss, etc.)');
-                if (concern === null) return;
-
-                const learning = prompt('What areas of climate science would you like to learn more about? (e.g., Renewable energy, Carbon footprint, Sustainable agriculture, etc.)');
-                if (learning === null) return;
-
-                const knowledge = prompt('How would you rate your current knowledge level? (e.g., Beginner, Intermediate, Advanced)');
-                if (knowledge === null) return;
-
-                // Store data
-                userProfile.step2.concern = concern || 'Not provided';
-                userProfile.step2.learning = learning || 'Not provided';
-                userProfile.step2.knowledge = knowledge || 'Not provided';
-                userProfile.step2.completed = true;
-
-                // Update display
-                updateStep2Display();
-                markStepAsCompleted(2);
-                updateProgress();
-            }
-        }
-
-        // Function to collect Step 3 data
-        function collectStep3() {
-            if (confirmStep(3)) {
-                const actions = prompt('What specific actions do you want to take to reduce your carbon footprint? (e.g., Use public transport, Reduce plastic, Support renewable energy, etc.)');
-                if (actions === null) return;
-
-                const goal = prompt('What is your personal climate action goal for the next year?');
-                if (goal === null) return;
-
-                const contribution = prompt('How do you plan to contribute to SDG 13 (Climate Action) in your community?');
-                if (contribution === null) return;
-
-                // Store data
-                userProfile.step3.actions = actions || 'Not provided';
-                userProfile.step3.goal = goal || 'Not provided';
-                userProfile.step3.contribution = contribution || 'Not provided';
-                userProfile.step3.completed = true;
-
-                // Update display
-                updateStep3Display();
-                markStepAsCompleted(3);
-                updateProgress();
-            }
-        }
-
-        // Function to confirm before starting prompts
-        function confirmStep(stepNumber) {
-            return confirm(`You are about to start Step ${stepNumber}. You can skip individual prompts. Continue?`);
-        }
-
-        // Function to skip a step
-        function skipStep(stepNumber) {
-            if (stepNumber === 1) {
-                userProfile.step1.completed = false;
-                clearStep1Data();
-            } else if (stepNumber === 2) {
-                userProfile.step2.completed = false;
-                clearStep2Data();
-            } else if (stepNumber === 3) {
-                userProfile.step3.completed = false;
-                clearStep3Data();
-            }
-
-            updateProgress();
-            alert(`Step ${stepNumber} skipped. You can return and complete it later.`);
-        }
-
-        // Update display functions
-        function updateStep1Display() {
-            document.getElementById('display-fullName').textContent = userProfile.step1.fullName;
-            document.getElementById('display-username').textContent = userProfile.step1.username;
-            document.getElementById('display-role').textContent = userProfile.step1.role;
-            renderProfile();
-        }
-
-        function updateStep2Display() {
-            document.getElementById('display-concern').textContent = userProfile.step2.concern;
-            document.getElementById('display-learning').textContent = userProfile.step2.learning;
-            document.getElementById('display-knowledge').textContent = userProfile.step2.knowledge;
-            renderProfile();
-        }
-
-        function updateStep3Display() {
-            document.getElementById('display-actions').textContent = userProfile.step3.actions;
-            document.getElementById('display-goal').textContent = userProfile.step3.goal;
-            document.getElementById('display-contribution').textContent = userProfile.step3.contribution;
-            renderProfile();
-        }
-
-        // Clear data functions
-        function clearStep1Data() {
-            userProfile.step1.fullName = null;
-            userProfile.step1.username = null;
-            userProfile.step1.role = null;
-            document.getElementById('display-fullName').textContent = 'Not provided';
-            document.getElementById('display-username').textContent = 'Not provided';
-            document.getElementById('display-role').textContent = 'Not provided';
-            renderProfile();
-        }
-
-        function clearStep2Data() {
-            userProfile.step2.concern = null;
-            userProfile.step2.learning = null;
-            userProfile.step2.knowledge = null;
-            document.getElementById('display-concern').textContent = 'Not provided';
-            document.getElementById('display-learning').textContent = 'Not provided';
-            document.getElementById('display-knowledge').textContent = 'Not provided';
-            renderProfile();
-        }
-
-        function clearStep3Data() {
-            userProfile.step3.actions = null;
-            userProfile.step3.goal = null;
-            userProfile.step3.contribution = null;
-            document.getElementById('display-actions').textContent = 'Not provided';
-            document.getElementById('display-goal').textContent = 'Not provided';
-            document.getElementById('display-contribution').textContent = 'Not provided';
-            renderProfile();
-        }
-
-        // Mark step as completed
-        function markStepAsCompleted(stepNumber) {
-            const buttons = document.querySelectorAll('.btn-step');
-            if (buttons[stepNumber - 1]) {
-                buttons[stepNumber - 1].classList.add('completed');
-            }
-        }
-
-        // Update progress indicator
-        function updateProgress() {
-            const completedSteps = [
-                userProfile.step1.completed,
-                userProfile.step2.completed,
-                userProfile.step3.completed
-            ].filter(Boolean).length;
-
-            const totalSteps = 3;
-            const progressPercentage = (completedSteps / totalSteps) * 100;
-
-            // Update progress bar
-            const progressFill = document.getElementById('progressFill');
-            progressFill.style.width = progressPercentage + '%';
-            progressFill.textContent = Math.round(progressPercentage) + '%';
-
-            // Update progress text
-            const progressText = document.getElementById('progressText');
-            if (completedSteps === 0) {
-                progressText.textContent = 'Not started';
-            } else if (completedSteps === totalSteps) {
-                progressText.textContent = 'Profile Complete! ✓';
-                document.getElementById('completionMessage').classList.add('show');
-            } else {
-                progressText.textContent = `${completedSteps} of ${totalSteps} steps completed`;
-                document.getElementById('completionMessage').classList.remove('show');
-            }
-        }
-
-        // Render the profile display
-        function renderProfile() {
-            // Render Personal Information
-            const basicsContent = document.getElementById('profile-basics-content');
-            if (userProfile.step1.completed) {
-                basicsContent.innerHTML = `
-                    <div class="profile-item">
-                        <div class="profile-item-label">Full Name</div>
-                        <div class="profile-item-value">${userProfile.step1.fullName}</div>
-                    </div>
-                    <div class="profile-item">
-                        <div class="profile-item-label">Username</div>
-                        <div class="profile-item-value">${userProfile.step1.username}</div>
-                    </div>
-                    <div class="profile-item">
-                        <div class="profile-item-label">Role / Interest</div>
-                        <div class="profile-item-value">${userProfile.step1.role}</div>
-                    </div>
-                `;
-            } else {
-                basicsContent.innerHTML = '<div class="profile-empty">No information provided yet</div>';
-            }
-
-            // Render Climate Interests
-            const interestsContent = document.getElementById('profile-interests-content');
-            if (userProfile.step2.completed) {
-                interestsContent.innerHTML = `
-                    <div class="profile-item">
-                        <div class="profile-item-label">Main Concern</div>
-                        <div class="profile-item-value">${userProfile.step2.concern}</div>
-                    </div>
-                    <div class="profile-item">
-                        <div class="profile-item-label">Learning Interests</div>
-                        <div class="profile-item-value">${userProfile.step2.learning}</div>
-                    </div>
-                    <div class="profile-item">
-                        <div class="profile-item-label">Knowledge Level</div>
-                        <div class="profile-item-value">${userProfile.step2.knowledge}</div>
-                    </div>
-                `;
-            } else {
-                interestsContent.innerHTML = '<div class="profile-empty">No information provided yet</div>';
-            }
-
-            // Render Climate Action Commitments
-            const commitmentsContent = document.getElementById('profile-commitments-content');
-            if (userProfile.step3.completed) {
-                commitmentsContent.innerHTML = `
-                    <div class="profile-item">
-                        <div class="profile-item-label">Planned Actions</div>
-                        <div class="profile-item-value">${userProfile.step3.actions}</div>
-                    </div>
-                    <div class="profile-item">
-                        <div class="profile-item-label">Personal Goal</div>
-                        <div class="profile-item-value">${userProfile.step3.goal}</div>
-                    </div>
-                    <div class="profile-item">
-                        <div class="profile-item-label">SDG 13 Contribution</div>
-                        <div class="profile-item-value">${userProfile.step3.contribution}</div>
-                    </div>
-                `;
-            } else {
-                commitmentsContent.innerHTML = '<div class="profile-empty">No information provided yet</div>';
-            }
-        }
-
-        // Initialize the page
-        window.addEventListener('load', function() {
-            updateProgress();
-            renderProfile();
+        // Switch between steps
+        function startStep(step) {
+        document.querySelectorAll('.step-content').forEach(s => {
+            s.style.display = "none";
         });
+
+        document.getElementById(`step-${step}`).style.display = "block";
+        }
+
+        // Collect Step 1 Data
+        function collectStep1() {
+        userProfile.step1.fullName = prompt("Enter your full name:");
+        userProfile.step1.username = prompt("Enter your username:");
+        userProfile.step1.role = prompt("Enter your role:");
+
+        displayStep1();
+        updateProgress();
+        }
+
+        // Collect Step 2 Data
+        function collectStep2() {
+        userProfile.step2.concern = prompt("Your main climate concern:");
+        userProfile.step2.learning = prompt("What do you want to learn?");
+        userProfile.step2.knowledge = prompt("Your knowledge level:");
+
+        displayStep2();
+        updateProgress();
+        }
+
+        // Collect Step 3 Data
+        function collectStep3() {
+        userProfile.step3.actions = prompt("Actions you will take:");
+        userProfile.step3.goal = prompt("Your climate goal:");
+        userProfile.step3.contribution = prompt("Your contribution:");
+
+        displayStep3();
+        updateProgress();
+        }
+
+        // Display Step 1 Data
+        function displayStep1() {
+        document.getElementById("display-fullName").textContent =
+            userProfile.step1.fullName || "Not provided";
+
+        document.getElementById("display-username").textContent =
+            userProfile.step1.username || "Not provided";
+
+        document.getElementById("display-role").textContent =
+            userProfile.step1.role || "Not provided";
+
+        renderProfile();
+        }
+
+        // Display Step 2 Data
+        function displayStep2() {
+        document.getElementById("display-concern").textContent =
+            userProfile.step2.concern || "Not provided";
+
+        document.getElementById("display-learning").textContent =
+            userProfile.step2.learning || "Not provided";
+
+        document.getElementById("display-knowledge").textContent =
+            userProfile.step2.knowledge || "Not provided";
+
+        renderProfile();
+        }
+
+        // Display Step 3 Data
+        function displayStep3() {
+        document.getElementById("display-actions").textContent =
+            userProfile.step3.actions || "Not provided";
+
+        document.getElementById("display-goal").textContent =
+            userProfile.step3.goal || "Not provided";
+
+        document.getElementById("display-contribution").textContent =
+            userProfile.step3.contribution || "Not provided";
+
+        renderProfile();
+        }
+
+        // Update Progress Bar
+        function updateProgress() {
+        let completed = 0;
+
+        if (userProfile.step1.fullName) completed++;
+        if (userProfile.step2.concern) completed++;
+        if (userProfile.step3.actions) completed++;
+
+        let percent = (completed / 3) * 100;
+
+        document.getElementById("progressFill").style.width = percent + "%";
+        document.getElementById("progressFill").textContent = percent + "%";
+        }
+
+        // Render Profile Summary
+        function renderProfile() {
+        // Step 1
+        document.getElementById("profile-basics-content").innerHTML =
+            userProfile.step1.fullName
+            ? `<p>${userProfile.step1.fullName} (${userProfile.step1.username}) - ${userProfile.step1.role}</p>`
+            : "No information provided";
+
+        // Step 2
+        document.getElementById("profile-interests-content").innerHTML =
+            userProfile.step2.concern
+            ? `<p>${userProfile.step2.concern}, ${userProfile.step2.learning}, ${userProfile.step2.knowledge}</p>`
+            : "No information provided";
+
+        // Step 3
+        document.getElementById("profile-commitments-content").innerHTML =
+            userProfile.step3.actions
+            ? `<p>${userProfile.step3.actions}, ${userProfile.step3.goal}, ${userProfile.step3.contribution}</p>`
+            : "No information provided";
+        }
+
+        // Skip Step (optional)
+        function skipStep(step) {
+        alert("Step " + step + " skipped!");
+        }
+
+        // Run when page loads
+        window.onload = function () {
+        updateProgress();
+        };
     </script>
+
 </body>
 </html>
