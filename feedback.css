@@ -27,6 +27,7 @@ h1, h2, h3, h4 {
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 1rem;
+  color : rgb(19, 167, 31)
 }
 
 h1 {
@@ -49,6 +50,45 @@ img {
   max-width: 100%;
   border-radius: 8px;
   display: block;
+}
+
+ /* Reviews Section */
+.reviews-container {
+    display: grid;
+    gap: 20px;
+}
+
+.review-card {
+    background: rgba(10, 31, 24, 0.5);
+    border: 1px solid var(--glass-border);
+    padding: 1.2rem;
+    border-radius: var(--radius-md);
+    transition: 0.3s;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(46,204,113,0.2);
+}
+
+.review-card h4 {
+    margin-bottom: 8px;
+}
+
+.hidden {
+    display: none;
+}
+
+.hidden-review {
+    display: none;
+}
+
+.see-more-btn {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: var(--primary-green);
+    cursor: pointer;
 }
 
 /* ─────────────────────────────────────────────── */
