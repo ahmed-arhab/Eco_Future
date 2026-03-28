@@ -18,20 +18,20 @@
 
         #feedbackForm fieldset {
             border: 1px solid rgba(46, 204, 113, 0.22);
-            border-radius: var(--radius-md);
+            border-radius: 16px;
             padding: 2rem 1.8rem;
             margin-bottom: 2.8rem;
-            background: var(--glass-bg);
+            background: rgba(0, 87, 0, 0.03);
             backdrop-filter: blur(12px);
             box-shadow: inset 0 2px 12px rgba(0,0,0,0.2);
         }
 
         #feedbackForm legend {
             font-size: 1.25rem;
-            color: var(--primary-green);
+            color: #2ecc71;
             font-weight: 600;
             padding: 0 1rem;
-            background: var(--bg-primary);
+            background: #06140f;
         }
 
         .form-group {
@@ -42,11 +42,11 @@
             display: block;
             margin-bottom: 0.6rem;
             font-weight: 500;
-            color: var(--text-main);
+            color: #f8fafc;
         }
 
         .required {
-            color: #f87171;
+            color: #cf6363;
             margin-left: 0.35rem;
         }
 
@@ -54,9 +54,9 @@
             width: 100%;
             padding: 0.9rem 1.1rem;
             background: rgba(255,255,255,0.04);
-            border: 1px solid var(--glass-border);
-            color: var(--text-main);
-            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #f8fafc;
+            border-radius: 8px;
             font-size: 1rem;
             transition: all 0.25s ease;
         }
@@ -70,13 +70,18 @@
 
         #counter {
             font-size: 0.9rem;
-            color: var(--text-muted);
+            color: #2ecc71;
             margin-top: 0.5rem;
             display: block;
         }
 
-        #counter.warning { color: #fbbf24; }
-        #counter.danger   { color: #f87171; }
+        #counter.warning {
+            color: #fbbf24; 
+        }
+
+        #counter.danger  { 
+            color: #f87171; 
+        }
 
         /* Vertical Programme Cards */
         .program-selection .options-grid {
@@ -88,10 +93,10 @@
 
         .program-card-option {
             background: rgba(10, 31, 24, 0.5);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
             overflow: hidden;
-            transition: all var(--transition-normal);
+            transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
         }
@@ -117,13 +122,13 @@
         .program-card-option h4 {
             margin: 0 0 0.5rem;
             font-size: 1.15rem;
-            color: var(--text-main);
+            color: #f8fafc;
         }
 
         .program-card-option p {
             margin: 0;
             font-size: 0.92rem;
-            color: var(--text-muted);
+            color: #94a3b8;
             line-height: 1.45;
         }
 
@@ -134,14 +139,14 @@
         }
 
         .program-card-option input:checked + .inner {
-            border: 2px solid var(--primary-green);
+            border: 2px solid #2ecc71;
             background: rgba(46,204,113,0.14);
             box-shadow: 0 0 0 4px rgba(46,204,113,0.25);
         }
 
         .inner {
             border: 2px solid transparent;
-            border-radius: var(--radius-md);
+            border-radius: 16px;
             transition: all 0.28s ease;
         }
 
@@ -209,7 +214,7 @@ document.getElementById("feedbackForm").addEventListener("submit", function(e) {
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="Simulator.html"></a>Simulator</a></li>
+                    <li><a href="simulator.html">Simulator</a></li>
                     <li><a href="feedback.html"  class="active">Feedback</a></li>
                     <li><a href="team.html">Team</a></li>
                     <li><a href="profile.html">UserProfile</a></li>
@@ -404,38 +409,48 @@ document.getElementById("feedbackForm").addEventListener("submit", function(e) {
 </main>
 
 <!-- Footer -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-section">
-                <h3><span class="footerblack">About</span>EcoFuture</h3>
-                <p>EcoFuture is dedicated to creating awareness and driving action towards SDG 13: Climate Action. Together, we build a sustainable future for our planet.</p>
-            </div>
 
             <div class="footer-section">
-                <h3><span class="footerblack">Quick</span>Links</h3>
+                <h3><span class="footerblack">Student</span>Details</h3>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="feedback.html">Feedback</a></li>
-                    <li><a href="profile.html">UserProfile</a></li>
+                    <li>Thanujan (ST1)</li>
+                    <li>Pansilu (ST2)</li>
+                    <li>Prasanna (ST3)</li>
+                    <li>Ahmed Arhab (ST4)</li>
                 </ul>
             </div>
 
+            <div class="footer-section">
+                <h3><span class="footerblack">Page</span>Editor</h3>
+                <ul class="footer-links">
+                    <li><a href="pageEditor_ST1.html">Student 1</a></li>
+                    <li><a href="pageEditor_ST2.html">Student 2</a></li>
+                    <li><a href="pageEditor_ST3.html">Student 3</a></li>
+                    <li><a href="pageEditor_ST4.html">Student 4</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3><span class="footerblack">Valid</span>ation</h3>
+                <ul class="footer-links">
+                    <li><a href="validation_ST1.html">Student 1</a></li>
+                    <li><a href="validation_ST2.html">Student 2</a></li>
+                    <li><a href="validation_ST3.html">Student 3</a></li>
+                    <li><a href="validation_ST4.html">Student 4</a></li>
+                </ul>
+            </div>
 
             <div class="footer-section">
                 <h3><span class="footerblack">More</span>Info</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Page Editor</a></li>
-                    <li><a href="#">Validation</a></li>
-                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="sitemap.html">Sitemap</a></li>
                     <li><a href="team.html">Team</a></li>
                 </ul>
             </div>
-        </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2026 EcoFuture. All rights reserved.</p>
-            <p>Committed to SDG 13: Climate Action for a Sustainable Future</p>
         </div>
     </footer>
 

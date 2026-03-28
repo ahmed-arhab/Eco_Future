@@ -10,85 +10,94 @@
 
         /* main content */
 
+        /* style the big banner area */
         .intro-section {
-                    position: relative;
-                    background: linear-gradient(rgba(26, 77, 46, 0.75), rgba(26, 77, 46, 0.9));
+                    position: relative;     /* allows layering if needed */
+                    background: linear-gradient(#1a4d2ebf, #1a4d2ee6);
                     color: #FFFFFF;
                     text-align: center;
-                    padding: 5rem 2rem;
-                    border: 2px solid chartreuse;
+                    padding: 5rem 2rem;     /* space inside section */
+                    border: 2px solid #7fff00;
                     border-radius: 20px;
-                    margin-bottom: 4rem;
-                    box-shadow: 0 4px 15px rgba(26, 77, 46, 0.8);
+                    margin-bottom: 4rem;        /* space below section */
+                    box-shadow: 0 4px 15px #1a4d2ecc;
                 }
 
+        /* Heading inside intro section */
         .intro-section h2 {
                     color: #FFFFFF;
                     font-size: 3rem;
-                    margin-bottom: 1rem;
-                    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+                    margin-bottom: 1rem;    /* space below */
+                    text-shadow: 2px 2px 4px #00000080;
                 }
                 
-                
+        /* Paragraph inside intro section */
         .intro-section p {
             color: #f5f7f8;
             font-size: 1.2rem;
             max-width: 800px;
-            margin: 0 auto 2rem auto;
+            margin: 0 auto 2rem auto;   /* center + spacing */
         }
 
+        
         .title , .text{
-                    color: #f5f7f8;
+                    color: #f5f7f8;     /* light color for headings/text */
             }
 
-        .tiles-container {      /* recheck this */
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-                    gap: 1.5rem;
+        /* grid layout */
+        .tiles-container {      
+                    display: grid;      /* recheck this */
+                    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));    /* responsive columns */
+                    gap: 1.5rem;        /* space between tiles */
                     margin-top: 2rem;
                 }
 
+        /* each tile style */
         .visual-tile {
                     position: relative;
                     border-radius: 12px;
-                    overflow: hidden;
+                    overflow: hidden;       /* hide overflow */
                     height: 250px;
                     display: flex;
-                    align-items: flex-end;
+                    align-items: flex-end;      /* text at bottom */
                     text-decoration: none;
-                    box-shadow: 0 4px 15px rgba(26, 77, 46, 0.08);
+                    box-shadow: 0 4px 15px #1a4d2e1a;
                     transition: transform 0.3s ease, box-shadow 0.3s ease;
                 }
 
+        /* Image inside tile */
         .visual-tile img {
                     position: absolute;
                     top: 0;
                     left: 0;
                     width: 100%;
                     height: 100%;
-                    object-fit: cover;
+                    object-fit: cover;  /* image fits nicely */
                     z-index: 1;
                     transition: transform 0.3s ease;
                 }
 
-                
+        /* Hover effect for tile */  
         .visual-tile:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(26, 77, 46, 0.15);
+            transform: translateY(-8px);     /* move up */
+            box-shadow: 0 12px 25px #1a4d2e26;
         }
 
+        /* Zoom image on hover */
         .visual-tile:hover img {
             transform: scale(1.1);
         }
 
+        /* Overlay text area on tile */
         .tile-overlay {
                     position: relative;
-                    z-index: 2;
-                    background: linear-gradient(transparent, rgba(26, 77, 46, 0.95));
+                    z-index: 2;     /* above image */
+                    background: linear-gradient(transparent, #1a4d2ef2); /* fade effect */
                     width: 100%;
                     padding: 2rem 1rem 1rem 1rem;
                 }
-
+        
+        /* Title inside tile */
         .tile-title {
                     color: #ffffff;
                     font-size: 1.1rem;
@@ -110,11 +119,11 @@
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="#">Simulator</a></li>
+                    <li><a href="simulator.html">Simulator</a></li>
                     <li><a href="feedback.html">Feedback</a></li>
                     <li><a href="team.html">Team</a></li>
                     <li><a href="profile.html">UserProfile</a></li>
-                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="sitemap.html">Sitemap</a></li>
                 </ul>
             </nav>
         </div>
@@ -126,7 +135,7 @@
         <section class="intro-section">
             <h2>Take Action for Our Planet</h2>
             <p>Climate change is the defining crisis of our time. It is happening even more quickly than we feared. But we are far from powerless in the face of this global threat. SDG 13 calls for urgent action to combat climate change and its impacts.</p>
-            <a href="#######" class="btn btn-accent">Try the Impact Simulator</a>
+            <a href="simulator.html" class="btn btn-accent">Try the Impact Simulator</a>
         </section>
 
         
@@ -196,21 +205,21 @@
                     </div>
                 </a>
 
-                <a href="#########" class="visual-tile">
+                <a href="content_ST2.html" class="visual-tile">
                     <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=600" alt="Wind Turbines">
                     <div class="tile-overlay">
                         <h4 class="tile-title">Renewable Energy</h4>
                     </div>
                 </a>
 
-                <a href="##########" class="visual-tile">
+                <a href="content_ST3.html" class="visual-tile">
                     <img src="https://media.istockphoto.com/id/1280157339/photo/aerial-view-of-green-grass-forest-with-tall-pine-trees-and-blue-bendy-river-flowing-through.jpg?s=612x612&w=0&k=20&c=jfZfoCkAcYNmnqlh1nyhDF2ou7wc_lhNqU9qGF95gJk=" alt="Forest and River">
                     <div class="tile-overlay">
                         <h4 class="tile-title">Ecosystem Impacts</h4>
                     </div>
                 </a>
 
-                <a href="##########" class="visual-tile">
+                <a href="content_ST4.html" class="visual-tile">
                     <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=600" alt="Globe and Hands">
                     <div class="tile-overlay">
                         <h4 class="tile-title">Global Policies</h4>
@@ -225,36 +234,45 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-section">
-                <h3><span class="footerblack">About</span>EcoFuture</h3>
-                <p>EcoFuture is dedicated to creating awareness and driving action towards SDG 13: Climate Action. Together, we build a sustainable future for our planet.</p>
-            </div>
 
             <div class="footer-section">
-                <h3><span class="footerblack">Quick</span>Links</h3>
+                <h3><span class="footerblack">Student</span>Details</h3>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="feedback.html">Feedback</a></li>
-                    <li><a href="profile.html">UserProfile</a></li>
+                    <li>Thanujan (ST1)</li>
+                    <li>Pansilu (ST2)</li>
+                    <li>Prasanna (ST3)</li>
+                    <li>Ahmed Arhab (ST4)</li>
                 </ul>
             </div>
 
+            <div class="footer-section">
+                <h3><span class="footerblack">Page</span>Editor</h3>
+                <ul class="footer-links">
+                    <li><a href="pageEditor_ST1.html">Student 1</a></li>
+                    <li><a href="pageEditor_ST2.html">Student 2</a></li>
+                    <li><a href="pageEditor_ST3.html">Student 3</a></li>
+                    <li><a href="pageEditor_ST4.html">Student 4</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3><span class="footerblack">Valid</span>ation</h3>
+                <ul class="footer-links">
+                    <li><a href="validation_ST1.html">Student 1</a></li>
+                    <li><a href="validation_ST2.html">Student 2</a></li>
+                    <li><a href="validation_ST3.html">Student 3</a></li>
+                    <li><a href="validation_ST4.html">Student 4</a></li>
+                </ul>
+            </div>
 
             <div class="footer-section">
                 <h3><span class="footerblack">More</span>Info</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Page Editor</a></li>
-                    <li><a href="#">Validation</a></li>
-                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="sitemap.html">Sitemap</a></li>
                     <li><a href="team.html">Team</a></li>
                 </ul>
             </div>
-        </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2026 EcoFuture. All rights reserved.</p>
-            <p>Committed to SDG 13: Climate Action for a Sustainable Future</p>
         </div>
     </footer>
 </body>
