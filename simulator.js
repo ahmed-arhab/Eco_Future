@@ -4,7 +4,7 @@ const actions = [
         id: 1,
         title: "Switch to Renewable Energy",
         description: "Install solar panels on your home or switch your electricity provider to 100% renewable sources.",
-        image: "D:\\Semester 2\\WEB DESIGN & DEVELOPMENT\\CW\\quiz\\Switch to Renewable Energy.jpeg",
+        image: "image\\Switch_to_Renewable_Energy.jpeg",
         alt: "Solar panels on a residential building",
         impact: 3
     },
@@ -12,7 +12,7 @@ const actions = [
         id: 2,
         title: "Reduce Transportation Emissions",
         description: "Use public transport, carpool, bike, or switch to an electric vehicle for daily commuting.",
-        image: "D:\\Semester 2\\WEB DESIGN & DEVELOPMENT\\CW\\quiz\\Reduce Transportation Emissions.jpeg",
+        image: "image\\Reduce_Transportation_Emissions.jpeg",
         alt: "Electric vehicle charging at a station",
         impact: 2
     },
@@ -20,7 +20,7 @@ const actions = [
         id: 3,
         title: "Plant Trees and Greenery",
         description: "Participate in tree-planting initiatives or create a home garden to absorb CO2 and support biodiversity.",
-        image: "D:\\Semester 2\\WEB DESIGN & DEVELOPMENT\\CW\\quiz\\Plant Trees and Greenery.webp",
+        image: "image\\Plant_Trees_and_Greenery.webp",
         alt: "Hands planting a young tree in soil",
         impact: 2
     },
@@ -28,7 +28,7 @@ const actions = [
         id: 4,
         title: "Reduce, Reuse, Recycle",
         description: "Minimize waste by reducing consumption, reusing items, and properly recycling materials.",
-        image: "D:\\Semester 2\\WEB DESIGN & DEVELOPMENT\\CW\\quiz\\3R.jpeg",
+        image: "image\\3R.jpeg",
         alt: "Colorful recycling bins with waste materials",
         impact: 1
     },
@@ -36,7 +36,7 @@ const actions = [
         id: 5,
         title: "Support Climate Advocacy",
         description: "Vote for climate-conscious policies, participate in climate marches, and educate others about climate change.",
-        image: "D:\\Semester 2\\WEB DESIGN & DEVELOPMENT\\CW\\quiz\\Support Climate Advocacy.jpeg",
+        image: "image\\Support_Climate_Advocacy.jpeg",
         alt: "Group of people at a climate action rally",
         impact: 2
     },
@@ -44,7 +44,7 @@ const actions = [
         id: 6,
         title: "Sustainable Consumption",
         description: "Buy sustainable products, support eco-friendly brands, reduce meat consumption, and minimize single-use plastics.",
-        image: "D:\\Semester 2\\WEB DESIGN & DEVELOPMENT\\CW\\quiz\\Sustainable Consumption.jpeg",
+        image: "image\\Sustainable_Consumption.jpeg",
         alt: "Eco-friendly sustainable products and packaging",
         impact: 2
     }
